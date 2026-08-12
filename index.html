@@ -1,0 +1,687 @@
+html_code = '''<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мелагенин Плюс — Кубинский препарат для лечения витилиго</title>
+    <meta name="description" content="Мелагенин Плюс (Melagenin Plus) — кубинский препарат для лечения витилиго. Состав, инструкция, показания.">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --primary-light: #5eead4;
+            --accent: #14b8a6;
+            --accent-glow: rgba(20, 184, 166, 0.15);
+            --bg: #f0fdfa;
+            --bg-card: #ffffff;
+            --bg-dark: #134e4a;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --radius: 16px;
+            --radius-sm: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7; color: var(--text); background: var(--bg);
+            overflow-x: hidden; -webkit-font-smoothing: antialiased;
+        }
+        ::selection { background: var(--primary-light); color: var(--bg-dark); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .reveal {
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-sm); transition: var(--transition);
+        }
+        header.scrolled { background: rgba(255, 255, 255, 0.95); box-shadow: var(--shadow); }
+        header .container { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800; color: var(--primary-dark); text-decoration: none; letter-spacing: -0.5px; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 10px; display: grid; place-items: center; font-size: 1.25rem; box-shadow: 0 4px 12px var(--accent-glow); }
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav a { color: var(--text-light); text-decoration: none; font-weight: 500; font-size: 0.9rem; position: relative; padding: 4px 0; transition: var(--transition); }
+        nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 2px; transition: width 0.3s ease; }
+        nav a:hover { color: var(--primary-dark); }
+        nav a:hover::after { width: 100%; }
+        .nav-cta { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white !important; padding: 10px 22px !important; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35); transition: var(--transition) !important; }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(13, 148, 136, 0.45); }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+        .burger span { display: block; width: 24px; height: 2.5px; background: var(--text); border-radius: 2px; transition: var(--transition); }
+
+        .hero {
+            position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 140px 24px 100px; overflow: hidden;
+            background: linear-gradient(160deg, #0f766e 0%, #134e4a 40%, #115e59 70%, #0d9488 100%);
+        }
+        .hero::before, .hero::after {
+            content: ''; position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; animation: float 10s ease-in-out infinite;
+        }
+        .hero::before { width: 500px; height: 500px; background: var(--primary-light); top: -10%; right: -5%; }
+        .hero::after { width: 400px; height: 400px; background: #2dd4bf; bottom: -10%; left: -5%; animation-delay: 5s; }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 850px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9);
+            padding: 8px 20px; border-radius: 50px; font-size: 0.875rem; font-weight: 500; margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease;
+        }
+        .hero h1 { font-size: clamp(2.2rem, 5.5vw, 4rem); font-weight: 800; color: white; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 1.25rem; animation: fadeInUp 1s ease 0.2s both; }
+        .hero h1 span { background: linear-gradient(135deg, #5eead4, #2dd4bf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-desc { font-size: clamp(1rem, 2.2vw, 1.25rem); color: rgba(255,255,255,0.85); max-width: 650px; margin: 0 auto 2rem; line-height: 1.7; animation: fadeInUp 1s ease 0.4s both; }
+        .hero-img { max-width: 320px; margin: 0 auto 2rem; border-radius: var(--radius); box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: fadeInUp 1s ease 0.3s both; }
+        .hero-img img { width: 100%; border-radius: var(--radius); display: block; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeInUp 1s ease 0.6s both; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 50px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: var(--transition); cursor: pointer; border: none; }
+        .btn-primary { background: white; color: var(--primary-dark); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+        .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px); }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); transform: translateY(-3px); }
+        .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); animation: fadeInUp 1s ease 0.8s both; }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 800; color: white; line-height: 1; }
+        .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        section { padding: 90px 0; position: relative; }
+        section.alt { background: white; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
+        .section-tag { display: inline-block; padding: 6px 16px; background: var(--accent-glow); color: var(--primary-dark); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 50px; margin-bottom: 1rem; }
+        .section-header h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 800; color: var(--text); line-height: 1.2; letter-spacing: -1px; margin-bottom: 1rem; }
+        .section-header p { color: var(--text-light); font-size: 1.1rem; }
+
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+        .card { background: var(--bg-card); border-radius: var(--radius); padding: 2rem; border: 1px solid rgba(0,0,0,0.04); box-shadow: var(--shadow-sm); transition: var(--transition); position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+        .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); border-color: transparent; }
+        .card:hover::before { transform: scaleX(1); }
+        .card-icon { width: 52px; height: 52px; border-radius: var(--radius-sm); display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 1.25rem; background: linear-gradient(135deg, var(--accent-glow), rgba(94,234,212,0.2)); border: 1px solid rgba(20,184,166,0.15); }
+        .card h3 { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; }
+        .card p { color: var(--text-light); font-size: 0.92rem; line-height: 1.7; }
+        .card-img { width: 100%; border-radius: var(--radius-sm); margin-bottom: 1rem; object-fit: cover; height: 180px; }
+
+        .warning-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px solid #fbbf24; border-radius: var(--radius); padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; box-shadow: var(--shadow-sm); }
+        .warning-box .icon { font-size: 1.5rem; flex-shrink: 0; }
+        .warning-box strong { color: #92400e; display: block; margin-bottom: 4px; }
+        .warning-box p { color: #a16207; font-size: 0.92rem; margin: 0; }
+        .danger-box { background: linear-gradient(135deg, #fee2e2, #fecaca); border: 1px solid #f87171; border-radius: var(--radius); padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; box-shadow: var(--shadow-sm); margin-top: 1.5rem; }
+        .danger-box .icon { font-size: 1.5rem; flex-shrink: 0; }
+        .danger-box strong { color: #991b1b; display: block; margin-bottom: 4px; }
+        .danger-box p { color: #7f1d1d; font-size: 0.92rem; margin: 0; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .about-visual { position: relative; }
+        .about-visual img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-xl); }
+        .about-text h2 { text-align: left; margin-bottom: 1.25rem; }
+        .about-text p { color: var(--text-light); font-size: 1rem; margin-bottom: 1rem; }
+        .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+        .feature-list li { display: flex; align-items: center; gap: 0.75rem; color: var(--text); font-weight: 500; font-size: 0.95rem; }
+        .feature-list li::before { content: '✓'; width: 22px; height: 22px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 50%; display: grid; place-items: center; font-size: 0.75rem; flex-shrink: 0; }
+
+        .info-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; background: var(--bg-card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+        .info-table th, .info-table td { padding: 1rem 1.25rem; text-align: left; font-size: 0.95rem; border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .info-table th { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; }
+        .info-table tr:last-child td { border-bottom: none; }
+        .info-table td { color: var(--text-light); }
+        .info-table td strong { color: var(--text); }
+
+        .steps { display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+        .step { display: flex; gap: 1.25rem; align-items: flex-start; background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04); }
+        .step-num { width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+        .step h4 { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--text); }
+        .step p { color: var(--text-light); font-size: 0.95rem; }
+
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .gallery-item { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); background: var(--bg-card); }
+        .gallery-item:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--shadow-xl); }
+        .gallery-item img { width: 100%; height: 220px; object-fit: cover; display: block; }
+        .gallery-caption { padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--text-light); text-align: center; }
+
+        .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+        .faq-item { background: var(--bg-card); border-radius: var(--radius-sm); border: 1px solid rgba(0,0,0,0.04); overflow: hidden; transition: var(--transition); }
+        .faq-item:hover { box-shadow: var(--shadow); }
+        .faq-question { width: 100%; padding: 1.25rem 1.5rem; background: none; border: none; text-align: left; font-size: 1rem; font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+        .faq-question:hover { color: var(--primary-dark); }
+        .faq-icon { font-size: 1.25rem; transition: transform 0.3s ease; color: var(--primary); }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 1.5rem; }
+        .faq-item.active .faq-answer { max-height: 400px; padding: 0 1.5rem 1.25rem; }
+        .faq-answer p { color: var(--text-light); line-height: 1.7; font-size: 0.95rem; }
+        .faq-answer ul { margin: 0.5rem 0 0 1.25rem; color: var(--text-light); }
+        .faq-answer li { margin-bottom: 0.4rem; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+        .contact-card { background: var(--bg-card); border-radius: var(--radius); padding: 2rem; text-align: center; border: 1px solid rgba(0,0,0,0.04); transition: var(--transition); text-decoration: none; color: inherit; display: block; }
+        .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .contact-card .icon-wrap { width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-glow), rgba(94,234,212,0.2)); border-radius: 50%; display: grid; place-items: center; font-size: 1.6rem; margin: 0 auto 1rem; }
+        .contact-card h4 { font-size: 1.05rem; color: var(--text); margin-bottom: 0.4rem; }
+        .contact-card p { color: var(--text-light); font-size: 0.92rem; }
+
+        footer { background: linear-gradient(180deg, #0f3d3a 0%, #0a2e2b 100%); color: rgba(255,255,255,0.6); padding: 70px 0 35px; position: relative; overflow: hidden; }
+        footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--primary-light), transparent); opacity: 0.3; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+        .footer-brand .logo { color: white; margin-bottom: 0.75rem; }
+        .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 300px; }
+        .footer-col h4 { color: white; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.25rem; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: var(--transition); }
+        .footer-col a:hover { color: var(--primary-light); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; text-align: center; font-size: 0.82rem; }
+        .footer-bottom strong { color: rgba(255,255,255,0.8); display: block; margin-bottom: 0.6rem; }
+
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-visual { order: -1; max-width: 450px; margin: 0 auto; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            nav ul { display: none; position: absolute; top: 72px; left: 0; right: 0; background: rgba(255,255,255,0.98); flex-direction: column; padding: 1.5rem; gap: 1rem; box-shadow: var(--shadow-lg); }
+            nav ul.active { display: flex; }
+            nav a { color: var(--text); }
+            .burger { display: flex; }
+            .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+            .stat-value { font-size: 1.4rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            section { padding: 60px 0; }
+            .hero-img { max-width: 240px; }
+            .info-table th, .info-table td { padding: 0.75rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🧬</div>
+                Мелагенин Плюс
+            </a>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#about">О препарате</a></li>
+                    <li><a href="#composition">Состав</a></li>
+                    <li><a href="#properties">Свойства</a></li>
+                    <li><a href="#application">Применение</a></li>
+                    <li><a href="#instruction">Инструкция</a></li>
+                    <li><a href="#research">Исследования</a></li>
+                    <li><a href="#faq">Вопросы</a></li>
+                    <li><a href="#contacts" class="nav-cta">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><span>🇨🇺</span> Кубинская фармацевтика</div>
+            <div class="hero-img">
+                <img src="https://kimi-web-img.kimi.ai/img/www.medcentre.com.ua/48fc6c9a06d21099bef81f6da7c9fd89406178a6.jpg" alt="Мелагенин Плюс">
+            </div>
+            <h1>Мелагенин Плюс — <span>природа</span><br>восстанавливает кожу</h1>
+            <p class="hero-desc">
+                Кубинский препарат на основе аллантоина и натуральных экстрактов 
+                для лечения витилиго, депигментации и стимуляции регенерации кожи
+            </p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Узнать больше →</a>
+                <a href="#instruction" class="btn btn-outline">Как применять</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><div class="stat-value">30+</div><div class="stat-label">лет на рынке</div></div>
+                <div class="stat-item"><div class="stat-value">40+</div><div class="stat-label">стран мира</div></div>
+                <div class="stat-item"><div class="stat-value">100%</div><div class="stat-label">натурально</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 30px 0; background: white;">
+        <div class="container">
+            <div class="warning-box reveal">
+                <span class="icon">⚠️</span>
+                <div>
+                    <strong>Важная информация</strong>
+                    <p>Информация на сайте носит исключительно ознакомительный характер и не является руководством к самолечению. Перед применением любого лекарственного препарата обязательно проконсультируйтесь с врачом.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="alt">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual reveal">
+                    <img src="https://kimi-web-img.kimi.ai/img/cubaheal.com/e2265451ba714bae048eaf5deefd5ce821d6a25d.jpg" alt="Мелагенин Плюс">
+                </div>
+                <div class="about-text reveal reveal-delay-1">
+                    <div class="section-tag">О препарате</div>
+                    <h2>Что такое Мелагенин Плюс?</h2>
+                    <p>
+                        <strong>Мелагенин Плюс (Melagenin Plus)</strong> — кубинский лекарственный препарат, 
+                        разработанный в <strong>Центре плацентарной гистотерапии</strong> на Кубе. 
+                        Предназначен для лечения витилиго и депигментации кожи.
+                    </p>
+                    <p>
+                        Основу составляет <strong>аллантоин</strong> — природное соединение из растений 
+                        (живокост, грецкий орех). Производство соответствует стандартам GMP.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Производство: Centro de Histoterapia Placentaria, Куба</li>
+                        <li>Форма выпуска: лосьон, 235 мл</li>
+                        <li>Системная абсорбция практически отсутствует</li>
+                        <li>Натуральный состав на основе растительных экстрактов</li>
+                        <li>Стимулирует репигментацию и регенерацию кожи</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="composition">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Состав</div>
+                <h2>Что входит в состав</h2>
+                <p>Действующие и вспомогательные компоненты препарата</p>
+            </div>
+            <div class="reveal">
+                <table class="info-table">
+                    <thead>
+                        <tr><th>Компонент</th><th>Описание</th><th>Роль</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Аллантоин</strong></td>
+                            <td>C₄H₆N₄O₃ — из растений (живокост, грецкий орех)</td>
+                            <td>Стимулирует регенерацию эпителия, ускоряет заживление</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Плацентарные экстракты</strong></td>
+                            <td>Биоактивные вещества из плацентарной ткани</td>
+                            <td>Стимулируют меланогенез, восстановление пигментации</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Этиловый спирт</strong></td>
+                            <td>Вспомогательный компонент</td>
+                            <td>Консервант, способствует проникновению активных веществ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Очищенная вода</strong></td>
+                            <td>Базовый растворитель</td>
+                            <td>Создаёт однородную консистенцию лосьона</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="danger-box">
+                    <span class="icon">🚫</span>
+                    <div>
+                        <strong>Противопоказания</strong>
+                        <p>Препарат противопоказан при индивидуальной гиперчувствительности к компонентам. Перед началом применения обязательна консультация врача-дерматолога.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="properties" class="alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Свойства</div>
+                <h2>Как работает Мелагенин Плюс</h2>
+                <p>Комплексное воздействие на все этапы восстановления кожи</p>
+            </div>
+            <div class="cards">
+                <div class="card reveal reveal-delay-1">
+                    <div class="card-icon">🧬</div>
+                    <h3>Стимуляция меланогенеза</h3>
+                    <p>Активные компоненты воздействуют на меланоциты — клетки, отвечающие за выработку пигмента меланина. Это способствует постепенному восстановлению естественного цвета кожи на участках витилиго.</p>
+                </div>
+                <div class="card reveal reveal-delay-2">
+                    <div class="card-icon">🩹</div>
+                    <h3>Регенерация тканей</h3>
+                    <p>Аллантоин активизирует процессы клеточного обновления, ускоряя рост нового эпителия. Улучшается микроциркуляция в поражённых тканях.</p>
+                </div>
+                <div class="card reveal reveal-delay-3">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Противовоспалительное действие</h3>
+                    <p>Снижает воспалительные реакции в зоне поражения, уменьшая раздражение и дискомфорт. Создаёт защитный барьер на поверхности кожи.</p>
+                </div>
+                <div class="card reveal reveal-delay-4">
+                    <div class="card-icon">💧</div>
+                    <h3>Увлажнение и смягчение</h3>
+                    <p>Поддерживает оптимальный гидробаланс кожи, предотвращает пересыхание. Кератолитический эффект аллантоина способствует мягкому отшелушиванию ороговевших клеток.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="application">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Применение</div>
+                <h2>Показания к применению</h2>
+                <p>Препарат назначается врачом-дерматологом при следующих состояниях</p>
+            </div>
+            <div class="cards">
+                <div class="card reveal reveal-delay-1">
+                    <img src="https://kimi-web-img.kimi.ai/img/melageninplus.com/b1c7754e8f660a2d479d5d2dd1793658658b4f75.png" alt="Мелагенин Плюс" class="card-img">
+                    <div class="card-icon">🔬</div>
+                    <h3>Витилиго</h3>
+                    <p>Основное показание — болезнь Витилиго, при которой на коже появляются участки депигментации. Препарат стимулирует восстановление пигментации в очагах поражения.</p>
+                </div>
+                <div class="card reveal reveal-delay-2">
+                    <div class="card-icon">🔥</div>
+                    <h3>Постожоговые депигментации</h3>
+                    <p>Депигментация кожи в результате термических, химических или солнечных ожогов любого происхождения. Препарат способствует восстановлению естественного цвета.</p>
+                </div>
+                <div class="card reveal reveal-delay-3">
+                    <div class="card-icon">🦓</div>
+                    <h3>Другие нарушения пигментации</h3>
+                    <p>Различные формы локальной депигментации кожи, включая последствия травм и хирургических вмешательств, при условии сохранения меланоцитов в очаге.</p>
+                </div>
+            </div>
+            <div class="warning-box reveal" style="margin-top: 2.5rem;">
+                <span class="icon">⚠️</span>
+                <div>
+                    <strong>Важно</strong>
+                    <p>Перечень показаний носит информационный характер. Решение о целесообразности использования препарата принимается исключительно лечащим врачом.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instruction" class="alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Инструкция</div>
+                <h2>Как применять Мелагенин Плюс</h2>
+                <p>Пошаговая схема использования препарата</p>
+            </div>
+            <div class="steps">
+                <div class="step reveal reveal-delay-1">
+                    <div class="step-num">1</div>
+                    <div>
+                        <h4>Подготовка кожи</h4>
+                        <p>Очистите участок кожи с витилиго мягким мылом и водой. Дайте коже полностью высохнуть естественным путём или промокните чистым полотенцем. Не используйте спиртосодержащие средства перед нанесением.</p>
+                    </div>
+                </div>
+                <div class="step reveal reveal-delay-2">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h4>Нанесение лосьона</h4>
+                        <p>Встряхните флакон перед использованием. Нанесите небольшое количество лосьона на поражённый участок тонким слоем с помощью ватного диска. Избегайте попадания на слизистые оболочки и в глаза.</p>
+                    </div>
+                </div>
+                <div class="step reveal reveal-delay-3">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h4>Экспозиция и курс</h4>
+                        <p>Оставьте препарат до полного высыхания (10–15 минут). Процедуру повторяйте 1–2 раза в день или по назначению врача. Курс лечения — от 3 до 6 месяцев в зависимости от площади и давности поражения.</p>
+                    </div>
+                </div>
+                <div class="step reveal reveal-delay-4">
+                    <div class="step-num">4</div>
+                    <div>
+                        <h4>Защита от солнца</h4>
+                        <p>Во время лечения избегайте чрезмерного пребывания на солнце. Обрабатываемые участки чувствительны к УФ-излучению. Используйте солнцезащитные средства с SPF 30+.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="danger-box reveal" style="margin-top: 2rem;">
+                <span class="icon">🚫</span>
+                <div>
+                    <strong>Побочные действия и меры предосторожности</strong>
+                    <p>В редких случаях возможны аллергические реакции (покраснение, зуд, жжение). При появлении нежелательных реакций прекратите использование и обратитесь к врачу. Храните в недоступном для детей месте при температуре не выше 30°C, защищая от прямых солнечных лучей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Галерея</div>
+                <h2>Фотографии препарата</h2>
+            </div>
+            <div class="gallery reveal">
+                <div class="gallery-item">
+                    <img src="https://kimi-web-img.kimi.ai/img/melagenina-plus.com/73550e50ab78fbdfa975bb377455176ebec6cb97.jpg" alt="Мелагенин Плюс">
+                    <div class="gallery-caption">Мелагенин Плюс, 235 мл</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://kimi-web-img.kimi.ai/img/melageninplus.com/b1c7754e8f660a2d479d5d2dd1793658658b4f75.png" alt="Мелагенин Плюс">
+                    <div class="gallery-caption">Упаковка курсом на 4 флакона</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://kimi-web-img.kimi.ai/img/cubaheal.com/e2265451ba714bae048eaf5deefd5ce821d6a25d.jpg" alt="Мелагенин Плюс">
+                    <div class="gallery-caption">Флаконы в коробках с инструкцией</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://kimi-web-img.kimi.ai/img/www.medcentre.com.ua/48fc6c9a06d21099bef81f6da7c9fd89406178a6.jpg" alt="Мелагенин Плюс">
+                    <div class="gallery-caption">Русскоязычная упаковка</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Научная база</div>
+                <h2>Исследования и международный опыт</h2>
+                <p>Результаты клинических испытаний и история препарата</p>
+            </div>
+            <div class="cards">
+                <div class="card reveal reveal-delay-1">
+                    <div class="card-icon">🏛️</div>
+                    <h3>Центр плацентарной гистотерапии</h3>
+                    <p>Препарат разработан в государственном Центре плацентарной гистотерапии Республики Куба — ведущем научно-исследовательском учреждении страны в области регенеративной медицины.</p>
+                </div>
+                <div class="card reveal reveal-delay-2">
+                    <div class="card-icon">📄</div>
+                    <h3>Клинические испытания</h3>
+                    <p>Мелагенин Плюс прошёл многочисленные клинические исследования на Кубе и в других странах. Результаты подтвердили эффективность при лечении витилиго различной степени тяжести.</p>
+                </div>
+                <div class="card reveal reveal-delay-3">
+                    <div class="card-icon">🌍</div>
+                    <h3>Международное признание</h3>
+                    <p>Препарат зарегистрирован и применяется в странах Латинской Америки, Европы, Азии и Африки более 30 лет. Эффективность подтверждена практикой использования в десятках тысяч пациентов.</p>
+                </div>
+                <div class="card reveal reveal-delay-4">
+                    <div class="card-icon">✅</div>
+                    <h3>Стандарты качества</h3>
+                    <p>Производство соответствует международным стандартам GMP (Good Manufacturing Practice). Каждая партия проходит строгий контроль качества на всех этапах производства.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">FAQ</div>
+                <h2>Часто задаваемые вопросы</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question">Где производится Мелагенин Плюс? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Препарат производится на Кубе в государственном Центре плацентарной гистотерапии (Centro de Histoterapia Placentaria) в Гаване. Производство соответствует международным стандартам GMP.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-1">
+                    <button class="faq-question">Как долго нужно использовать препарат? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Курс лечения определяет врач индивидуально. Обычно он составляет от 3 до 6 месяцев. Первые признаки репигментации могут появиться через 2–3 месяца регулярного применения.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-2">
+                    <button class="faq-question">Есть ли побочные эффекты? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Препарат хорошо переносится. В редких случаях возможны местные аллергические реакции: покраснение, зуд, жжение кожи. При появлении любых нежелательных реакций прекратите использование и обратитесь к дерматологу.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-3">
+                    <button class="faq-question">Можно ли использовать при беременности? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Использование во время беременности и кормления грудью возможно только по назначению врача после оценки соотношения польза/риск. Системная абсорбция препарата практически отсутствует, но консультация специалиста обязательна.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-4">
+                    <button class="faq-question">Как хранить препарат? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Храните в сухом, защищённом от света месте при температуре не выше 30°C. Держать в недоступном для детей месте. Не замораживать. Перед каждым использованием встряхивать флакон.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">Помогает ли при всех формах витилиго? <span class="faq-icon">+</span></button>
+                    <div class="faq-answer">
+                        <p>Эффективность зависит от типа витилиго, площади поражения, давности заболевания и индивидуальных особенностей. Наилучшие результаты достигаются при:</p>
+                        <ul>
+                            <li>Сегментарной форме витилиго</li>
+                            <li>Небольших очагах поражения (до 5 см в диаметре)</li>
+                            <li>Свежих очагах (до 3 лет)</li>
+                            <li>Наличии остаточных меланоцитов в очаге</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Контакты</div>
+                <h2>Свяжитесь с нами</h2>
+                <p>Если у вас остались вопросы о препарате Мелагенин Плюс</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card reveal reveal-delay-1">
+                    <div class="icon-wrap">📧</div>
+                    <h4>Email</h4>
+                    <p>proslavast100@gmail.com</p>
+                </div>
+                <div class="contact-card reveal reveal-delay-2">
+                    <div class="icon-wrap">📞</div>
+                    <h4>Телефон</h4>
+                    <p>8 903 144 91 65</p>
+                </div>
+                <a href="https://www.avito.ru/user/92ea2697411c057f946ae59112c9cef4/profile?src=sharing" target="_blank" rel="noopener" class="contact-card reveal reveal-delay-3">
+                    <div class="icon-wrap">🛒</div>
+                    <h4>Авито</h4>
+                    <p>Наш магазин на Авито →</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><div class="logo-icon">🧬</div>Мелагенин Плюс</a>
+                    <p>Информационный ресурс о кубинском препарате Мелагенин Плюс (Melagenin Plus) для лечения витилиго и регенерации кожи.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="#about">О препарате</a></li>
+                        <li><a href="#composition">Состав</a></li>
+                        <li><a href="#properties">Свойства</a></li>
+                        <li><a href="#application">Применение</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="#instruction">Инструкция</a></li>
+                        <li><a href="#research">Исследования</a></li>
+                        <li><a href="#faq">Вопросы и ответы</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Правовая информация</h4>
+                    <ul>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Условия использования</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <strong>Отказ от ответственности</strong>
+                <p>Данный сайт создан исключительно в информационных целях. Администрация сайта не несёт ответственности за последствия самолечения. Вся информация о препарате Мелагенин Плюс предоставлена в ознакомительных целях и не заменяет консультацию специалиста. Перед применением препарата обязательно проконсультируйтесь с врачом.</p>
+                <p style="margin-top: 1.25rem; opacity: 0.5;">© 2026 Мелагенин Плюс. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        const burger = document.getElementById('burger');
+        const navMenu = document.getElementById('nav-menu');
+        burger.addEventListener('click', () => navMenu.classList.toggle('active'));
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => navMenu.classList.remove('active'));
+        });
+    </script>
+
+</body>
+</html>'''
+
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(html_code)
+
+print('✅ Файл index.html создан!')
+print('Открой его в браузере двойным кликом.')
+'''
+
+# Теперь сохраним этот Python-скрипт в файл
+with open('/mnt/agents/output/create_site.py', 'w', encoding='utf-8') as f:
+    f.write(python_code)
+
+print("✅ Python-скрипт создан!")
+print("Скачай create_site.py и запусти в PyCharm — он создаст index.html автоматически.")
